@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Slab Light'), local('RobotoSlab-Light'), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJUo2lTMeWA_kmIyWrkNCwPc.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJR_xHqYgAV9Bl_ZQbYUxnQU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(https://fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37Zo4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotoslab/v6/y7lebkjgREBJK96VQi37ZobN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJYlIZu-HDpmDIZMigmsroc4.woff2) format('woff2'), url(https://fonts.gstatic.com/s/robotoslab/v6/dazS1PrQQuCxC3iOAJFEJTqR_3kx9_hJXbbyU8S6IN0.woff) format('woff');
+}
+
+body #pjWrapper { font-family: 'Roboto Slab', serif; }
+
+#pjWrapper .navbar-default .nav a:hover { opacity: 0.7; }
+
+#pjWrapper .text-primary,
+#pjWrapper a { color: #e37d4c; } 
+
+#pjWrapper .ui-slider-handle,
+#pjWrapper .btn-primary { color: #fff; background: #e37d4c; border: 1px solid #d27530;}
+
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .navbar-default { background: #fafafa; color: #1ab4c0; }
+#pjWrapper .navbar-default a { color: #1ab4c0; }
+
+#pjWrapper .thumbnail p span { color: #1ab4c0; }
+
+#pjWrapper .thumbnail p { padding-top: 15px; }
+#pjWrapper .range p { padding-top: 5px; }
+
+#pjWrapper .ui-slider-range { background: #f48854; border: 1px solid #d3774b; }
+
+#pjWrapper .btn-group .btn,
+#pjWrapper .pagination > li > a, 
+#pjWrapper .pagination > li > span { border-color: #d27530; color: #d27530; }
+
+#pjWrapper .thumbnail:hover { border-color: #d27530; background: #fafafa; }
+
+#pjWrapper .dropdown-menu { background: #fafafa; }
+
+#pjWrapper .badge { background: #e37d4c; }
+
+#pjWrapper .btn-group .btn.active,
+#pjWrapper .btn-default.active, 
+#pjWrapper .btn-default.focus, 
+#pjWrapper .btn-default:active, 
+#pjWrapper .btn-default:focus, 
+#pjWrapper .btn-default:hover, 
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .pagination > .active > a,
+#pjWrapper .pagination > li > a:focus, 
+#pjWrapper .pagination > li > a:hover, 
+#pjWrapper .pagination > li > span:focus, 
+#pjWrapper .pagination > li > span:hover { background: #e37d4c; color: #fff; }

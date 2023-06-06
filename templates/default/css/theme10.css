@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr4-67659ICLY8bMrYhtePPA.woff2) format('woff2'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Titillium Web'), local('TitilliumWeb-Regular'), url(https://fonts.gstatic.com/s/titilliumweb/v4/7XUFZ5tgS-tD6QamInJTcZSnX671uNZIV63UdXh3Mg0.woff2) format('woff2'), url(https://fonts.gstatic.com/s/titilliumweb/v4/7XUFZ5tgS-tD6QamInJTcdGU7DQ8I6RFMlK0vgclk7w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Titillium WebSemiBold'), local('TitilliumWeb-SemiBold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr46gJz9aNFrmnwBdd69aqzY.woff2) format('woff2'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wprx7IBmrqA5IG9z8WNe77b9o.woff) format('woff');
+}
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Titillium WebBold'), local('TitilliumWeb-Bold'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wprxP6Eu1_xfSBSoi9uie1FdE.woff2) format('woff2'), url(https://fonts.gstatic.com/s/titilliumweb/v4/anMUvcNT0H1YN4FII8wpr0bathaSTBR2c4i13_wzlb0.woff) format('woff');
+}
+
+body #pjWrapper { font-family: 'Titillium Web', sans-serif; } 
+
+#pjWrapper a { color: #6a87b1; } 
+
+#pjWrapper .badge { background: #333; } 
+
+#pjWrapper .ui-slider-handle,
+#pjWrapper .btn-primary,
+#pjWrapper .dropdown-menu,
+#pjWrapper .dropdown .btn{ color: #fff; background: #6a87b1; border: 1px solid #19467f;}
+
+#pjWrapper .btn-group .btn { color: #6a87b1; background: #fff; border: 1px solid #19467f;}
+
+#pjWrapper .dropdown a,
+#pjWrapper .dropdown-menu a { color: #fff; }
+
+#pjWrapper .navbar-default .active a,
+#pjWrapper .dropdown-menu a:hover { background: #19467f; }
+
+#pjWrapper .navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
+#pjWrapper .navbar-default .navbar-toggle:focus,
+#pjWrapper .navbar-default .navbar-toggle:hover { background-color: #19467f; }
+
+#pjWrapper .dropdown .btn:hover,
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .btn-group .btn.active { background: #19467f; border: 1px solid #128260;}
+
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .navbar-default { background: #6a87b1; color: #fff; }
+
+#pjWrapper .navbar-default .nav .active:hover a,
+#pjWrapper .navbar-default a { color: #fff; }
+#pjWrapper .navbar-default .nav a:hover { color: #19467f; }
+
+#pjWrapper .dropdown > a { color: #fff; background: #6a87b1; }
+
+#pjWrapper .panel-default > .panel-body,
+#pjWrapper .thumbnail { background: #edf0f5; }
+
+#pjWrapper .ui-slider-range { background: #6a87b1; border: 1px solid #19467f; }
+
+#pjWrapper .pagination > li > a, 
+#pjWrapper .pagination > li > span,
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .panel-default,
+#pjWrapper .thumbnail:hover { border-color: #19467f; }
+
+#pjWrapper .thumbnail p { padding-top: 15px;}
+
+#pjWrapper .range p { padding-top: 5px;}
+
+#pjWrapper .btn-group .btn.active,
+#pjWrapper .btn-default.active, 
+#pjWrapper .btn-default.focus, 
+#pjWrapper .btn-default:active, 
+#pjWrapper .btn-default:focus, 
+#pjWrapper .btn-default:hover, 
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .pagination > li > a:focus, 
+#pjWrapper .pagination > .active > a, 
+#pjWrapper .pagination > li > a:hover, 
+#pjWrapper .pagination > li > span:focus, 
+#pjWrapper .pagination > li > span:hover { background: #6a87b1; color: #fff; }
+
+#pjWrapper .navbar .navbar-nav .dropdown-toggle:hover,
+#pjWrapper .navbar .open .dropdown-menu a:hover,
+#pjWrapper .navbar .open .dropdown-menu .active,
+#pjWrapper .navbar .open .dropdown-menu .active:hover { background-color: #19467f; color: #fff;}
+
+#pjWrapper .pjPcs-table { border-color: #19467f; }
+#pjWrapper .pjPcs-table td { background-color: #edf0f5; }
+#pjWrapper .pjPcs-table tbody tr:hover td { background-color: #d9dee8; }
+#pjWrapper .pjPcs-table tbody tr:hover { box-shadow: 0 0 0 rgba(0,0,0,0); }

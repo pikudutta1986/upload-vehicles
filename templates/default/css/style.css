@@ -1,0 +1,85 @@
+body #pjWrapper .container-fluid { padding: 0; overflow: hidden; }
+
+#pjWrapper .btn:hover { opacity: 0.8 }
+
+#pjWrapper .filter-col { margin-top: 8px; }
+#pjWrapper .filter-col label { cursor: pointer;}
+
+#pjWrapper .pjCompareTable th:first-child,
+#pjWrapper .pjCompareTable td:first-child { min-width: 140px; }
+
+#pjWrapper .pjCompareTable th,
+#pjWrapper .pjCompareTable td { min-width: 400px; }
+
+#pjWrapper .dropdown-menu .active { background: #eee; }
+
+#pjWrapper .form-group .buttons { padding-bottom: 10px; }
+#pjWrapper .pjFilterLabel { cursor: pointer; margin-right: -10px; }
+
+#pjWrapper .navbar-nav li:first-child a { min-height: 50px; }
+#pjWrapper .pjCrCaptchaImage{cursor: pointer;}
+
+#pjWrapper .pjPcs-table { width: 100%; border-collapse: collapse; border-spacing: 0; border: 1px solid #e7e7e7; border-radius: 5px; }
+#pjWrapper .table-responsive + .table-responsive { margin-top: 15px; }
+
+#pjWrapper .pjPcs-table th { padding: 10px 60px 10px 10px; cursor: pointer; color: #fff; background-color: #e7e7e7; font-weight: normal; position: relative; }
+#pjWrapper .pjPcs-table thead:hover th { background-color: #4e4e4e; }
+#pjWrapper .pjPcs-table th:first-child { font-size: 24px; }
+#pjWrapper .pjPcs-table th strong { display: block; padding: 10px; }
+
+#pjWrapper .pjPcs-table thead { position: relative; }
+#pjWrapper .pjPcs-table thead .pjPcs-table-btn-toggle:after { content: '+'; }
+#pjWrapper .pjPcs-table thead.active .pjPcs-table-btn-toggle:after { content: '-'; }
+#pjWrapper .pjPcs-table thead.active .pjPcs-table-btn-toggle { line-height: 27px; }
+
+#pjWrapper .pjPcs-table td { padding: 10px; font-size: 14px; vertical-align: top; background-color: #f5f5f5; }
+
+#pjWrapper .pjPcs-table tr:nth-child(even) td { background-color: #fff; }
+
+#pjWrapper .pjPcs-table-btn-toggle { position: absolute; top: 22px; right: 15px; width: 32px; height: 32px; background-color: #fff; border-radius: 50%; font-size: 32px; line-height: 26px; font-weight: bold; text-align: center; cursor: pointer; color: #333; text-decoration: none; outline: none; -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.3);}
+#pjWrapper .pjPcs-table-btn-toggle:hover { text-decoration: none; }
+
+#pjWrapper .pjPcs-table tbody { display: none; }
+#pjWrapper .pjPcs-table-main tbody { display: table-row-group; }
+#pjWrapper .pjPcs-table tbody tr:hover { -webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.3); box-shadow: 0 0 3px 0 rgba(0,0,0,0.3); } 
+#pjWrapper .pjPcs-table tbody tr:hover td { background-color: #fff; }
+
+#pjWrapper .pjPcs-table th:first-child,
+#pjWrapper .pjPcs-table td:first-child { width: 240px; min-width: 240px; vertical-align: top; }
+
+#pjWrapper .pjPcs-table th,
+#pjWrapper .pjPcs-table td { min-width: 240px; }
+
+#pjWrapper .pjPcs-table td:first-child p { padding-top: 15px; font-size: 13px; margin-bottom: 0; }
+#pjWrapper .pjPcs-table td:first-child .pjPcs-image { padding-top: 15px; }
+
+#pjWrapper .pjPcs-table tbody tr:first-child td { vertical-align: top; }
+#pjWrapper .pjPcs-table tbody tr:first-child td { font-weight: bold; }
+
+@media (max-width: 1024px) {
+	#pjWrapper .pjPcs-body td:before { content: attr(data-th)": "; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; font-weight: bold; font-size: 13px; }
+	#pjWrapper .pjPcs-body td:first-child:before { display: none; }
+	#pjWrapper .pjPcs-body td:first-child { font-size: 18px; font-weight: bold; }
+	#pjWrapper .pjPcs-table tbody tr:first-child { display: none; }
+
+	#pjWrapper .pjPcs-table tr:nth-of-type(2n+1) { background: #eee none repeat scroll 0 0; }
+
+	#pjWrapper .pjPcs-table tbody tr:hover td { background-color: inherit; }
+
+	#pjWrapper .pjPcs-image { padding-top: 10px; }
+}
+
+@media (max-width: 640px) {
+	#pjWrapper .pjPcs-table td, 
+	#pjWrapper .pjPcs-table th, 
+	#pjWrapper .pjPcs-table tr { display: block; }
+
+	#pjWrapper .pjPcs-table th:first-child, 
+	#pjWrapper .pjPcs-table td:first-child { width: 100%; }
+
+	#pjWrapper .pjPcs-table-btn-toggle { top: 0; }
+}
+
+@media (max-width: 767px){
+	#pjWrapper .navbar-nav li:first-child a { min-height: 0px; }
+}

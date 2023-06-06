@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(https://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(https://fonts.gstatic.com/s/ubuntu/v7/sDGTilo5QRsfWu6Yc11AXg.woff2) format('woff2'), url(https://fonts.gstatic.com/s/ubuntu/v7/_xyN3apAT_yRRDeqB3sPRg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Ubuntu Medium'), local('Ubuntu-Medium'), url(https://fonts.gstatic.com/s/ubuntu/v7/OsJ2DjdpjqFRVUSto6IffFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/ubuntu/v7/OsJ2DjdpjqFRVUSto6IffD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(https://fonts.gstatic.com/s/ubuntu/v7/0ihfXUL2emPh0ROJezvraFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/ubuntu/v7/0ihfXUL2emPh0ROJezvraD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+body #pjWrapper { font-family: 'Ubuntu', sans-serif; background: #f9f8f3; color: #5a3e33;}
+
+#pjWrapper a { color: #d66e3b; } 
+
+#pjWrapper .ui-slider-handle,
+#pjWrapper .btn-primary,
+#pjWrapper .dropdown-menu,
+#pjWrapper .dropdown .btn,
+#pjWrapper .btn-group .btn { color: #fff; background: #d66e3b; border: 1px solid #bd5726;}
+
+#pjWrapper .navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
+#pjWrapper .navbar-default .navbar-toggle:focus,
+#pjWrapper .navbar-default .navbar-toggle:hover { background-color: #bd5726; }
+
+#pjWrapper .navbar-default .nav a:hover { color: #9e471d; }
+
+#pjWrapper .dropdown a,
+#pjWrapper .dropdown-menu a { color: #fff; }
+
+#pjWrapper .dropdown a:hover,
+#pjWrapper .navbar-default .active a,
+#pjWrapper .dropdown-menu a:hover { background: #bd5726; }
+
+#pjWrapper .dropdown .btn:hover,
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .btn-group .btn.active { background: #bd5726; border: 1px solid #a24a1f;}
+
+#pjWrapper .badge { background: #5a3e33; }
+
+#pjWrapper .form-control::-webkit-input-placeholder {color: #5a3e33; }
+#pjWrapper .form-control:-moz-placeholder {color: #5a3e33; }
+#pjWrapper .form-control::-moz-placeholder {color: #5a3e33; }
+#pjWrapper .form-control:-ms-input-placeholder {color: #5a3e33; }
+
+#pjWrapper .ui-slider,
+#pjWrapper .pjPcs-table,
+#pjWrapper .panel-default { border-color: #dad6cb; }
+#pjWrapper .panel-default > .panel-heading { border-color: #dad6cb; background: #f1ede4; color: #5a3e33;}
+
+#pjWrapper .navbar-default { background: #d66e3b; color: #fff; }
+#pjWrapper .navbar-default .nav .active:hover a,
+#pjWrapper .navbar-default a { color: #fff; }
+
+#pjWrapper .dropdown > a { color: #fff; background: #d66e3b; }
+#pjWrapper .form-control { background: #f1ede4 none repeat scroll 0 0; border-color: #dad6cb; color: #5a3e33; }
+
+#pjWrapper .pjPcs-table td { background-color: #f1ede4; }
+#pjWrapper .pjPcs-table tbody tr:hover td { background-color: #e8e1d2; }
+
+#pjWrapper .ui-slider-range { background: #f77c3f; border: 1px solid #e87238; }
+
+#pjWrapper .text-primary { color: #d66e3b; }
+
+#pjWrapper .pagination > .disabled > a:hover, 
+#pjWrapper .pagination > .disabled > a { background: #f1ede4 none repeat scroll 0 0; border-color: #dad6cb; color: #5a3e33; }
+
+#pjWrapper .pagination > li > a, 
+#pjWrapper .pagination > li > span { background: #f1ede4 none repeat scroll 0 0; border-color: #dad6cb; color: #bd5726; }
+
+#pjWrapper .thumbnail:hover { border-color: #d66e3b; }
+
+#pjWrapper .thumbnail p { padding-top: 15px; }
+
+#pjWrapper .pagination > .active > a,
+#pjWrapper .pagination > li > a:focus, 
+#pjWrapper .pagination > li > a:hover, 
+#pjWrapper .pagination > li > span:focus, 
+#pjWrapper .pagination > li > span:hover { background: #d66e3b; color: #fff; }
+
+#pjWrapper .navbar .navbar-nav .dropdown-toggle:hover,
+#pjWrapper .navbar .open .dropdown-menu a:hover,
+#pjWrapper .navbar .open .dropdown-menu .active,
+#pjWrapper .navbar .open .dropdown-menu .active:hover { background-color: #9e471d; color: #fff;}

@@ -1,0 +1,67 @@
+#pjWrapper .text-primary,
+#pjWrapper a { color: #1ec290; } 
+
+#pjWrapper .badge { background: #333; }
+
+#pjWrapper .ui-slider-handle,
+#pjWrapper .btn-primary,
+#pjWrapper .navbar-default .dropdown-menu { color: #fff; background: #1ec290; border: 1px solid #1db084;}
+
+#pjWrapper .navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
+#pjWrapper .navbar-default .navbar-toggle:focus,
+#pjWrapper .navbar-default .navbar-toggle:hover { background-color: #1db084; }
+
+#pjWrapper .navbar-default .nav a:hover { color: #107758; }
+
+#pjWrapper .dropdown a,
+#pjWrapper .navbar-default .dropdown-menu a { color: #fff; }
+
+#pjWrapper .dropdown a:hover,
+#pjWrapper .navbar-default .active a,
+#pjWrapper .navbar-default .dropdown-menu a:hover { background: #1db084; }
+
+#pjWrapper .dropdown .btn:hover,
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .btn-group .btn.active { background: #1db084; border: 1px solid #128260;}
+
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .navbar-default { background: #1ec290; color: #fff; }
+#pjWrapper .navbar-default a { color: #fff; }
+
+#pjWrapper .dropdown > a { color: #fff; background: #1ec290; }
+
+#pjWrapper .ui-slider-range { background: #25d6a0; border: 1px solid #1eb889; }
+
+#pjWrapper .btn-group .btn { color: #1db084; }
+#pjWrapper .btn-group .btn:hover { color: #fff; }
+
+#pjWrapper .btn-group .btn,
+#pjWrapper .pagination > li > a, 
+#pjWrapper .pagination > li > span,
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .panel-default,
+#pjWrapper .thumbnail:hover { border-color: #1db084; }
+
+#pjWrapper .thumbnail p { padding-top: 15px; text-transform: uppercase; font-size: 15px; font-weight: bold; }
+
+#pjWrapper .range p { padding-top: 5px; }
+
+#pjWrapper .panel-default > .panel-heading { text-transform: uppercase; font-weight: bold; }
+
+#pjWrapper .btn-group .btn.active,
+#pjWrapper .btn-default.active, 
+#pjWrapper .btn-default.focus, 
+#pjWrapper .btn-default:active, 
+#pjWrapper .btn-default:focus, 
+#pjWrapper .btn-default:hover, 
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .pagination > li > a:focus, 
+#pjWrapper .pagination > .active > a, 
+#pjWrapper .pagination > li > a:hover, 
+#pjWrapper .pagination > li > span:focus, 
+#pjWrapper .pagination > li > span:hover { background: #1ec290; color: #fff; }
+
+#pjWrapper .navbar .navbar-nav .dropdown-toggle:hover,
+#pjWrapper .navbar .open .dropdown-menu a:hover,
+#pjWrapper .navbar .open .dropdown-menu .active,
+#pjWrapper .navbar .open .dropdown-menu .active:hover { background-color: #1db084; color: #fff;}

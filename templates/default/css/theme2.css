@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'), local('Oswald-Light'), url(https://fonts.gstatic.com/s/oswald/v10/HqHm7BVC_nzzTui2lzQTDVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/oswald/v10/HqHm7BVC_nzzTui2lzQTDT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v10/pEobIV_lL25TKBpqVI_a2w.woff2) format('woff2'), url(https://fonts.gstatic.com/s/oswald/v10/-g5pDUSRgvxvOl5u-a_WHw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'), local('Oswald-Bold'), url(https://fonts.gstatic.com/s/oswald/v10/bH7276GfdCjMjApa_dkG6VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(https://fonts.gstatic.com/s/oswald/v10/bH7276GfdCjMjApa_dkG6T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+body #pjWrapper { font-family: 'Oswald', sans-serif; }
+
+#pjWrapper .navbar-default .navbar-toggle .icon-bar { background-color: #fff; }
+
+#pjWrapper .navbar .open .dropdown-menu .active,
+#pjWrapper .navbar .open .dropdown-menu .active:hover { background-color: #ef4625; color: #fff;}
+
+#pjWrapper .navbar-default .navbar-toggle:focus,
+#pjWrapper .navbar-default .navbar-toggle:hover { background-color: #ef4625; }
+
+#pjWrapper .navbar-collapse { border: 0; } 
+
+#pjWrapper .ui-slider-handle,
+#pjWrapper .btn-primary { background: #ef4625; border-color: #a92d15; }
+
+#pjWrapper .ui-slider-range { background: #f9785f; border: 1px solid #db6953; }
+
+#pjWrapper .badge { background: #ef4625; }
+
+#pjWrapper .text-primary,
+#pjWrapper .navbar a:hover,
+#pjWrapper .btn-group .btn,
+#pjWrapper a { color: #ef4625; } 
+
+#pjWrapper .thumbnail:hover { border-color: #a92d15; }
+#pjWrapper .thumbnail p { margin-top: 15px; }
+
+#pjWrapper .pagination .active a { background: #ddd; border-color: #ddd;}
+
+#pjWrapper .navbar { background: #3d3938 none repeat scroll 0 0; border-color: #3d3938; }
+#pjWrapper .navbar-default .nav .active:hover a,
+#pjWrapper .navbar a { color: #fff; }
+
+#pjWrapper .navbar .open .dropdown-menu a:hover,
+#pjWrapper .navbar .active a { background: #211f1e; }
+
+#pjWrapper .navbar .open .dropdown-menu,
+#pjWrapper .navbar .open .dropdown-toggle { background: #3d3938; }
+
+#pjWrapper .range p { margin-top: 5px; }
+
+#pjWrapper .form-control:focus {  border: 1px solid #ccc; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; }
+
+#pjWrapper .panel-heading {background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(62, 60, 61, 1) 0%, rgba(56, 54, 55, 1) 42%, rgba(50, 48, 49, 1) 65%, rgba(46, 44, 45, 1) 100%) repeat scroll 0 0;
+    color: #fff;}

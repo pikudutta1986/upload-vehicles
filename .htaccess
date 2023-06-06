@@ -1,0 +1,51 @@
+RewriteEngine On
+
+# disable TRACK and TRACE http methods. 'RewriteEngine On' is required!
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+RewriteRule .* - [F]
+RewriteRule ^(.*)-(\d+).html$ preview.php?controller=pjListings&action=pjActionView&id=$2 [L,NC,QSA]
+RewriteRule index.html$ preview.php?controller=pjListings&action=pjActionCars [L,NC,QSA]
+RewriteRule login.html$ preview.php?controller=pjListings&action=pjActionLogin [L,NC,QSA]
+RewriteRule register.html$ preview.php?controller=pjListings&action=pjActionRegister [L,NC,QSA]
+RewriteRule search.html$ preview.php?controller=pjListings&action=pjActionSearch [L,NC,QSA]
+RewriteRule compare.html$ preview.php?controller=pjListings&action=pjActionCompare [L,NC,QSA]
+
+Options -Indexes
+ServerSignature Off
+<ifModule mod_headers.c>
+	Header unset X-Powered-By
+</ifModule>
+
+<IfModule php5_module>
+	php_value session.cookie_httponly true
+</IfModule>
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 120
+   php_value max_input_time 120
+   php_value max_input_vars 1000
+   php_value memory_limit 128M
+   php_value post_max_size 120M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+   php_value upload_max_filesize 120M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 120
+   php_value max_input_time 120
+   php_value max_input_vars 1000
+   php_value memory_limit 128M
+   php_value post_max_size 120M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+   php_value upload_max_filesize 120M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit

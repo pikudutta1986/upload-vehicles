@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2'), url(https://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcoWiMMZ7xLd792ULpGE4W_Y.woff2) format('woff2'), url(https://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcgFhaRv2pGgT5Kf0An0s4MM.woff) format('woff');
+}
+
+body #pjWrapper { font-family: 'Montserrat', sans-serif; }
+
+#pjWrapper { background: #222; color: #bebebe;}
+
+#pjWrapper .navbar-default .nav a:hover { opacity: 0.7; }
+
+#pjWrapper .text-primary,
+#pjWrapper a { color: #fff; } 
+
+#pjWrapper .dropdown-menu,
+#pjWrapper .dropdown .btn,
+#pjWrapper .btn-default,
+#pjWrapper .btn-primary,
+#pjWrapper .btn-group .btn{ color: #fff; background: #413f40; border: 1px solid #1e1d1d;}
+
+#pjWrapper .navbar-default .dropdown-menu a:hover,
+#pjWrapper .dropdown-menu a { background: #413f40;  }
+#pjWrapper .dropdown-menu a:hover { background: #1e1d1d; }
+
+#pjWrapper .navbar-default .dropdown-menu a,
+#pjWrapper .navbar-default .dropdown-menu { background: #1e1d1d; }
+
+#pjWrapper .dropdown .btn:hover,
+#pjWrapper .btn-group .btn:hover,
+#pjWrapper .btn-group .btn.active { background: #1e1d1d; border: 1px solid #111;}
+
+#pjWrapper .thumbnail,
+#pjWrapper .list-group-item,
+#pjWrapper .panel-default > .panel-body { background: #413f40; }
+
+#pjWrapper .panel-default > .panel-heading { background: #1e1d1d; color: #fff; }
+
+#pjWrapper .navbar-default .active a { background: #161515; }
+
+#pjWrapper .panel { background: #1e1d1d; }
+
+#pjWrapper .thumbnail { border: 1px solid #222; }
+
+#pjWrapper .list-group-item,
+#pjWrapper .thumbnail:hover { border: 1px solid #111; }
+
+#pjWrapper .navbar-default { background: #1e1d1d; color: #fff; border-color: #111; }
+#pjWrapper .navbar-default a { color: #fff; }
+
+#pjWrapper .table-bordered, 
+#pjWrapper .table-bordered > tbody > tr > td, 
+#pjWrapper .table-bordered > tbody > tr > th, 
+#pjWrapper .table-bordered > tfoot > tr > td, 
+#pjWrapper .table-bordered > tfoot > tr > th, 
+#pjWrapper .table-bordered > thead > tr > td, 
+#pjWrapper .table-bordered > thead > tr > th,
+#pjWrapper .pagination > li > a, 
+#pjWrapper .pagination > li > span,
+#pjWrapper .panel-default > .panel-heading,
+#pjWrapper .panel-default,
+#pjWrapper .thumbnail:hover { border-color: #222; }
+
+#pjWrapper .ui-widget-content { border: 1px solid #111; }
+
+#pjWrapper .ui-slider-range { background: #302e2e; border: 1px solid #302e2e; }
+
+#pjWrapper .ui-slider-handle { background: #1e1d1d; border: 1px solid #111;} 
+
+#pjWrapper .form-control:focus { box-shadow: 0 0px 0px rgba(0, 0, 0, 0) inset, 0 0 0px rgba(102, 175, 233, 0); }  
+
+#pjWrapper .table-striped > tbody > tr:nth-of-type(2n+1),
+#pjWrapper .pagination > li > a { background: #413f40; color: #fff; }
+
+#pjWrapper .pagination > li > a:focus, 
+#pjWrapper .pagination > li > a:hover, 
+#pjWrapper .pagination > li > span:focus, 
+#pjWrapper .pagination > li > span:hover,
+#pjWrapper .navbar-default .navbar-nav > .open > a, 
+#pjWrapper .navbar-default .navbar-nav > .open > a:focus, 
+#pjWrapper .navbar-default .navbar-nav > .open > a:hover { background: #1e1d1d ; }
+
+#pjWrapper .navbar .navbar-nav .dropdown-toggle:hover,
+#pjWrapper .navbar .open .dropdown-menu a:hover,
+#pjWrapper .navbar .open .dropdown-menu .active,
+#pjWrapper .navbar .open .dropdown-menu .active:hover { background-color: #413f40; color: #fff; }
+
+#pjWrapper .pjPcs-table { border-color: #000; }
+#pjWrapper .pjPcs-table td { background-color: #222; }
+#pjWrapper .pjPcs-table tr:nth-child(2n) td { background-color: #333; }
+#pjWrapper .pjPcs-table tbody tr:hover td { background-color: #111; }
+#pjWrapper .pjPcs-table tbody tr:hover { box-shadow: 0 0 0 rgba(0,0,0,0); }
