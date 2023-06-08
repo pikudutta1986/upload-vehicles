@@ -1,4 +1,7 @@
 <?php
+// echo '<pre>';
+// print_r($tpl);
+// print_r($tpl['feature_arr']);
 if (isset($tpl['status']))
 {
 	$status = __('status', true);
@@ -62,11 +65,11 @@ if (isset($tpl['status']))
 		
 			<ul>
 				<li><a href="#tabs-1"><?php __('lblListingSummary'); ?></a></li>
-				<li><a href="#tabs-2"><?php __('lblListingDetails'); ?></a></li>
+				<!-- <li><a href="#tabs-2"><?php __('lblListingDetails'); ?></a></li>
 				<li><a href="#tabs-3"><?php __('lblListingDescription'); ?></a></li>
 				<li><a href="#tabs-4"><?php __('lblListingExtras'); ?></a></li>
 				<li><a href="#tabs-5"><?php __('lblListingPhotos'); ?></a></li>
-				<li><a href="#tabs-6"><?php __('lblListingSeo'); ?></a></li>
+				<li><a href="#tabs-6"><?php __('lblListingSeo'); ?></a></li> -->
 			</ul>
 		
 			<div id="tabs-1">
@@ -80,10 +83,12 @@ if (isset($tpl['status']))
 						<input type="text" name="listing_refid" id="listing_refid" value="<?php echo htmlspecialchars(stripslashes($tpl['arr']['listing_refid'])); ?>" class="pj-form-field required" />
 					</span>
 				</p>
-				<p style="overflow: visible">
+				<p style="overflow: visible; display: none;">
 					<label class="title"><?php __('lblListingType'); ?></label>
 					<span class="inline_block">
-						<select name="car_type" id="car_type" class="pj-form-field w150 required">
+					<input type="text" name="car_type" id="car_type" value="used" class="pj-form-field required" readonly/>
+
+						<!-- <select name="car_type" id="car_type" class="pj-form-field w150 required">
 							<option value="">-- <?php __('lblChoose'); ?> --</option>
 							<?php
 							foreach (__('car_types', true) as $k => $v)
@@ -91,7 +96,7 @@ if (isset($tpl['status']))
 								?><option value="<?php echo $k; ?>" <?php echo $k == $tpl['arr']['car_type'] ? 'selected="selected"' : null; ?>><?php echo stripslashes($v); ?></option><?php
 							}
 							?>
-						</select>
+						</select> -->
 					</span>
 				</p>
 				<p>
@@ -156,7 +161,7 @@ if (isset($tpl['status']))
 					<?php
 				} else {
 					?>
-					<p>
+					<p style="display: none;">
 						<label class="title"><?php __('lblListingExpire'); ?></label>
 						<span class="left float_left"><?php echo pjUtil::formatDate(date("Y-m-d", strtotime($tpl['arr']['expire'])), 'Y-m-d', $tpl['option_arr']['o_date_format'] ); ?></span>
 						<a class="pj-button float_left l10" href="<?php echo $_SERVER['PHP_SELF']; ?>?controller=pjAdminListings&amp;action=pjActionPayment&amp;id=<?php echo $tpl['arr']['id']; ?>"><?php __('lblListingExtend'); ?></a>
@@ -188,8 +193,9 @@ if (isset($tpl['status']))
 					<?php
 				}
 				?>
-				<p>
+				<p style="display: none;">
 					<label class="title"><?php __('lblOwnerShow'); ?></label>
+					<span>
 						<select name="owner_show" id="owner_show" class="pj-form-field w150">
 							<?php
 							foreach (__('_yesno', true) as $k => $v)
@@ -222,13 +228,12 @@ if (isset($tpl['status']))
 					<?php
 				} 
 				?>
-				<p>
+				<!-- <p>
 					<label class="title">&nbsp;</label>
 					<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
-				</p>
-			</div>
-		
-			<div id="tabs-2">
+				</p> -->
+
+				<!-- from tabs 2 -->
 				<?php
 				if($controller->isOwner())
 				{
@@ -245,19 +250,21 @@ if (isset($tpl['status']))
 					foreach ($tpl['lp_arr'] as $v)
 					{
 						?>
-						<p class="pj-multilang-wrap" data-index="<?php echo $v['id']; ?>" style="display: <?php echo (int) $v['is_default'] === 0 ? 'none' : NULL; ?>">
+						<!-- <p class="pj-multilang-wrap" data-index="<?php echo $v['id']; ?>" style="display: <?php echo (int) $v['is_default'] === 0 ? 'none' : NULL; ?>">
 							<label class="title"><?php __('lblListingTitle'); ?></label>
 							<span class="inline_block">
-								<input type="text" name="i18n[<?php echo $v['id']; ?>][title]" class="pj-form-field w500<?php echo $controller->isOwner() ? ((int) $v['id'] === $locale ? ' required' : NULL) : ((int) $v['is_default'] === 0 ? NULL : ' required' ); ?>" value="<?php echo htmlspecialchars(stripslashes(@$tpl['arr']['i18n'][$v['id']]['title'])); ?>" />
+								<input type="text" name="i18n[<?php echo $v['id']; ?>][title]" class="pj-form-field w500<?php echo $controller->isOwner() ? ((int) $v['id'] === $locale ? ' required' : NULL) : ((int) $v['is_default'] === 0 ? NULL : ' required' ); ?>" value="<?php echo htmlspecialchars(stripslashes(@$tpl['arr']['i18n'][$v['id']]['title']));?>"/>
 								<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
 								<span class="pj-multilang-input"><img src="<?php echo PJ_INSTALL_URL . PJ_FRAMEWORK_LIBS_PATH . 'pj/img/flags/' . $v['file']; ?>" alt="" /></span>
 								<?php endif;?>
 							</span>
-						</p>
+						</p> -->
 						<?php
 					}
 					$items = array();
 					$feature_types = __('feature_types', true);
+					// print_r($feature_types);
+					// print_r($tpl['feature_arr']);
 					foreach ($feature_types as $k => $v)
 					{
 						foreach ($tpl['feature_arr'] as $feature)
@@ -278,7 +285,7 @@ if (isset($tpl['status']))
 						if (isset($items[$k]) && $items[$k] > 0)
 						{
 							?>
-							<p>
+							<p class="<?php echo ($k === 'seats') ? 'hidden-option' : ''; ?>">
 								<label class="title"><?php echo stripslashes($v); ?></label>
 								<span id="boxFeature<?php echo $k;?>" class="inline-block">
 									<select name="feature_<?php echo $k; ?>_id" id="feature_<?php echo $k; ?>_id" class="pj-form-field w200">
@@ -311,7 +318,7 @@ if (isset($tpl['status']))
 							<input type="text" id="listing_price" name="listing_price" class="pj-form-field w100 align_right" maxlength="18" value="<?php echo $tpl['arr']['listing_price']; ?>" />
 						</span>
 					</p>
-					<p>
+					<p style="display: none;">
 						<label class="title"><?php __('lblListingFirstRegistration'); ?></label>
 						<span class="inline_block">
 							<select name="listing_month" id="listing_month" class="pj-form-field">
@@ -345,7 +352,214 @@ if (isset($tpl['status']))
 							<span><?php echo $tpl['option_arr']['o_mileage_in'];?></span>
 						</span>
 					</p>
+					<p style="display: none;">
+						<label class="title"><?php __('lblListingPower'); ?></label>
+						<span class="inline_block">
+							<input type="text" name="listing_power" id="listing_power" value="<?php echo htmlspecialchars(stripslashes($tpl['arr']['listing_power'])); ?>" maxlength="10" class="pj-form-field field-int w100 number" data-msg-required="<?php __('pj_number_validation');?>"/>
+							<span><?php echo $tpl['option_arr']['o_power_in'];?></span>
+						</span>
+					</p>
+					<!-- <p>
+						<label class="title">&nbsp;</label>
+						<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
+					</p> -->
+				</div>
+				<!-- from tabs2 -->
+
+				<!-- from tabs 3 -->
+				<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+				<div class="multilang b10"></div>
+				<?php endif;?>
+				<div class="clear_both">
+					<?php
+					foreach ($tpl['lp_arr'] as $v)
+					{
+						?>
+						<p class="pj-multilang-wrap" data-index="<?php echo $v['id']; ?>" style="display: <?php echo (int) $v['is_default'] === 0 ? 'none' : NULL; ?>">
+							<label class="title"><?php __('lblListingDescription'); ?></label>
+							<span class="inline_block">
+								<textarea id="i18n_<?php echo $v['id']?>_description" data-index="<?php echo $v['id'];?>" name="i18n[<?php echo $v['id']; ?>][description]" class="mceEditor" style="width: 570px; height: 400px"><?php echo stripslashes(@$tpl['arr']['i18n'][$v['id']]['description']); ?></textarea>
+								<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+								<span class="pj-multilang-input"><img src="<?php echo PJ_INSTALL_URL . PJ_FRAMEWORK_LIBS_PATH . 'pj/img/flags/' . $v['file']; ?>" alt="" /></span>
+								<?php endif;?>
+							</span>
+						</p>
+						<?php
+					}
+					?>
+				</div>
+				<!-- <p>
+					<label class="title">&nbsp;</label>
+					<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
+				</p> -->
+				<!-- from tabs 3 -->
+
+				<!-- from tabs 4 -->
+				<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+				<div class="multilang b10"></div>
+				<?php endif;?>
+				<div class="clear_both">
+					<?php
+					foreach ($tpl['lp_arr'] as $v)
+					{
+						?>
+						<p class="pj-multilang-wrap" data-index="<?php echo $v['id']; ?>" style="display: <?php echo (int) $v['is_default'] === 0 ? 'none' : NULL; ?>">
+							<label class="title"><?php __('lblListingDescription'); ?></label>
+							<span class="inline_block">
+								<textarea id="i18n_<?php echo $v['id']?>_description" data-index="<?php echo $v['id'];?>" name="i18n[<?php echo $v['id']; ?>][description]" class="mceEditor" style="width: 570px; height: 400px"><?php echo stripslashes(@$tpl['arr']['i18n'][$v['id']]['description']); ?></textarea>
+								<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+								<span class="pj-multilang-input"><img src="<?php echo PJ_INSTALL_URL . PJ_FRAMEWORK_LIBS_PATH . 'pj/img/flags/' . $v['file']; ?>" alt="" /></span>
+								<?php endif;?>
+							</span>
+						</p>
+						<?php
+					}
+					?>
+				</div>
+				<!-- <p>
+					<label class="title">&nbsp;</label>
+					<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
+				</p> -->
+				<!-- from tabs 4 -->
+
+
+				<!-- from tabs 5 -->
+
+				<?php
+				pjUtil::printNotice(@$titles['AL41'], @$bodies['AL41']);
+				?>
+				<div id="gallery"></div>
+
+				<p style="text-align: right;">
+					<label class="title">&nbsp;</label>
+					<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
+				</p>
+
+				<!-- from tabs 5 -->
+
+
+			</div>
+		
+			<!-- <div id="tabs-2">
+				<?php
+				if($controller->isOwner())
+				{
+					pjUtil::printNotice(__('infoOwnerCarDetailTitle', true), __('infoOwnerCarDetailBody', true));
+				}else{
+					pjUtil::printNotice(__('infoCarDetailTitle', true), __('infoCarDetailBody', true));
+				} 
+				?>
+				<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+				<div class="multilang b10 first_multilang"></div>
+				<?php endif;?>
+				<div class="clear_both">
+					<?php
+					foreach ($tpl['lp_arr'] as $v)
+					{
+						?>
+						<p class="pj-multilang-wrap" data-index="<?php echo $v['id']; ?>" style="display: <?php echo (int) $v['is_default'] === 0 ? 'none' : NULL; ?>">
+							<label class="title"><?php __('lblListingTitle'); ?></label>
+							<span class="inline_block">
+								<input type="text" name="i18n[<?php echo $v['id']; ?>][title]" class="pj-form-field w500<?php echo $controller->isOwner() ? ((int) $v['id'] === $locale ? ' required' : NULL) : ((int) $v['is_default'] === 0 ? NULL : ' required' ); ?>" value="<?php echo htmlspecialchars(stripslashes(@$tpl['arr']['i18n'][$v['id']]['title']));?>"/>
+								<?php if ((int) $tpl['option_arr']['o_multi_lang'] === 1 && count($tpl['lp_arr']) > 1) : ?>
+								<span class="pj-multilang-input"><img src="<?php echo PJ_INSTALL_URL . PJ_FRAMEWORK_LIBS_PATH . 'pj/img/flags/' . $v['file']; ?>" alt="" /></span>
+								<?php endif;?>
+							</span>
+						</p>
+						<?php
+					}
+					$items = array();
+					$feature_types = __('feature_types', true);
+					// print_r($feature_types);
+					// print_r($tpl['feature_arr']);
+					foreach ($feature_types as $k => $v)
+					{
+						foreach ($tpl['feature_arr'] as $feature)
+						{
+							if ($feature['type'] == $k)
+							{
+								if (array_key_exists($k, $items))
+								{
+									$items[$k]++;
+								} else {
+									$items[$k] = 1;
+								}
+							}
+						}
+					}
+					foreach ($feature_types as $k => $v)
+					{
+						if (isset($items[$k]) && $items[$k] > 0)
+						{
+							?>
+							<p class="<?php echo ($k === 'seats') ? 'hidden-option' : ''; ?>">
+								<label class="title"><?php echo stripslashes($v); ?></label>
+								<span id="boxFeature<?php echo $k;?>" class="inline-block">
+									<select name="feature_<?php echo $k; ?>_id" id="feature_<?php echo $k; ?>_id" class="pj-form-field w200">
+										<option value="">-- <?php __('lblChoose'); ?> --</option>
+										<?php
+										foreach ($tpl['feature_arr'] as $feature)
+										{
+											if ($feature['type'] == $k)
+											{
+												if (isset($tpl['arr']['feature_'.$k.'_id']) && $tpl['arr']['feature_'.$k.'_id'] == $feature['id'])
+												{
+													?><option value="<?php echo $feature['id']; ?>" selected="selected"><?php echo stripslashes($feature['name']); ?></option><?php	
+												} else {
+													?><option value="<?php echo $feature['id']; ?>"><?php echo stripslashes($feature['name']); ?></option><?php
+												}
+											}
+										}
+										?>
+									</select>
+								</span>
+							</p>					
+							<?php
+						}
+					}
+					?>
 					<p>
+						<label class="title"><?php __('lblListingPrice'); ?></label>
+						<span class="pj-form-field-custom pj-form-field-custom-before">
+							<span class="pj-form-field-before"><abbr class="pj-form-field-icon-text"><?php echo pjUtil::formatCurrencySign(NULL, $tpl['option_arr']['o_currency'], ""); ?></abbr></span>
+							<input type="text" id="listing_price" name="listing_price" class="pj-form-field w100 align_right" maxlength="18" value="<?php echo $tpl['arr']['listing_price']; ?>" />
+						</span>
+					</p>
+					<p style="display: none;">
+						<label class="title"><?php __('lblListingFirstRegistration'); ?></label>
+						<span class="inline_block">
+							<select name="listing_month" id="listing_month" class="pj-form-field">
+								<option value="">-- <?php __('lblChoose'); ?> --</option>
+								<?php
+								for($i = 1; $i <= 12; $i++)
+								{
+									?>
+									<option value="<?php echo $i;?>" <?php echo $tpl['arr']['listing_month'] == $i ? 'selected="selected"' : '';?> ><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ;?></option>
+									<?php
+								}
+								?>
+							</select>
+							<select name="listing_year" id="listing_year" class="pj-form-field">
+								<option value="">-- <?php __('lblChoose'); ?> --</option>
+								<?php
+								for($i = date('Y'); $i >= 1950; $i--)
+								{
+									?>
+									<option value="<?php echo $i;?>" <?php echo $tpl['arr']['listing_year'] == $i ? 'selected="selected"' : '';?> ><?php echo $i;?></option>
+									<?php
+								}
+								?>
+							</select>
+						</span>
+					</p>
+					<p>
+						<label class="title"><?php __('lblListingMileage'); ?></label>
+						<span class="inline_block">
+							<input type="text" name="listing_mileage" id="listing_mileage" value="<?php echo htmlspecialchars(stripslashes($tpl['arr']['listing_mileage'])); ?>" maxlength="10" class="pj-form-field field-int w100 number" data-msg-required="<?php __('pj_number_validation');?>"/>
+							<span><?php echo $tpl['option_arr']['o_mileage_in'];?></span>
+						</span>
+					</p>
+					<p style="display: none;">
 						<label class="title"><?php __('lblListingPower'); ?></label>
 						<span class="inline_block">
 							<input type="text" name="listing_power" id="listing_power" value="<?php echo htmlspecialchars(stripslashes($tpl['arr']['listing_power'])); ?>" maxlength="10" class="pj-form-field field-int w100 number" data-msg-required="<?php __('pj_number_validation');?>"/>
@@ -386,7 +600,7 @@ if (isset($tpl['status']))
 					<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button" />
 				</p>
 			</div>
-			
+
 			<div id="tabs-4">
 				<?php
 				if($controller->isOwner())
@@ -488,7 +702,7 @@ if (isset($tpl['status']))
 						<input type="submit" value="<?php __('btnSave'); ?>" class="pj-button pj-button-save" />
 					</p>
 				</div>
-			</div>
+			</div> -->
 			
 		</div> <!-- #tabs -->
 	</form>
@@ -549,3 +763,9 @@ if (isset($tpl['status']))
 	}
 }
 ?>
+
+<style>
+	.hidden-option {
+		display: none;
+	}
+</style>
