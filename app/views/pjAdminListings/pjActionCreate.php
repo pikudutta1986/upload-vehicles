@@ -88,24 +88,43 @@ if (isset($tpl['status']))
 
 				<select name="car_type" id="car_type" class="pj-form-field w150 required">
 
-					<option value="">-- <?php __('lblChoose'); ?> --</option>
+					<option value="used">Used cars</option>
 
-					<?php
+					<?php /*
 
 					foreach (__('car_types', true) as $k => $v)
 
 					{
 
-						?><option value="<?php echo $k; ?>"><?php echo stripslashes($v); ?></option><?php
+						if($k == 'used') {
+
+							?><option value="<?php echo $k; ?>" selected><?php echo stripslashes($v); ?></option><?php
+						} else {
+							?><option value="<?php echo $k; ?>"><?php echo stripslashes($v); ?></option><?php
+						}
 
 					}
 
-					?>
+				*/	?>
 
 				</select>
 
 			</span>
 
+		</p>
+
+		<p>
+			<label class="title">Vin</label>
+			<span class="inline_block">
+				<input type="text" name="vin" id="vin" class="pj-form-field required" value="" />
+			</span>
+		</p>
+
+		<p>
+			<label class="title">Year</label>
+			<span class="inline_block">
+				<input type="text" name="year" id="year" class="pj-form-field required" value="" />
+			</span>
 		</p>
 
 		<p>
@@ -160,7 +179,7 @@ if (isset($tpl['status']))
 
 			?>
 
-			<p>
+			<p style="display: none;">
 
 				<label class="title"><?php __('lblListingStatus'); ?></label>
 
@@ -190,7 +209,7 @@ if (isset($tpl['status']))
 
 			</p>
 
-			<p id="expiration_container" style="display:none;">
+			<p id="expiration_container" style="display: none;">
 
 				<label class="title"><?php __('lblListingExpire'); ?></label>
 
@@ -206,7 +225,7 @@ if (isset($tpl['status']))
 
 			</p>
 
-			<p style="overflow: visible;">
+			<p style="overflow: visible; display: none;">
 
 				<label class="title"><?php __('lblListingOwner'); ?></label>
 
