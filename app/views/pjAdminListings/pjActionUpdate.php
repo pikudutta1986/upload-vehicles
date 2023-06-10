@@ -47,20 +47,70 @@ if (isset($tpl['status']))
 		<input type="hidden" name="locale" value="<?php echo $locale; ?>" />
 
 		<?php
-		$title_arr = array();
-		if(!empty($tpl['arr']['i18n'][$locale]['title']))
-		{
-			$title_arr[] = pjSanitize::html($tpl['arr']['i18n'][$locale]['title']); 
+		// $title_arr = array();
+		// if(!empty($tpl['arr']['i18n'][$locale]['title']))
+		// {
+		// 	$title_arr[] = pjSanitize::html($tpl['arr']['i18n'][$locale]['title']); 
+		// }
+		// if(!empty($tpl['arr']['listing_refid']))
+		// {
+		// 	$title_arr[] = pjSanitize::html($tpl['arr']['listing_refid']);
+		// }
+		// if(!empty($title_arr))
+		// {
+		// 	?><div class="b10 bold"><?php echo implode("  / ", $title_arr);?></div><?php
+		// }
+
+
+		// title section starts here........
+
+		$title = '';
+		if (!empty($tpl['arr']['year'])) {
+			$title .= $tpl['arr']['year'];
 		}
-		if(!empty($tpl['arr']['listing_refid']))
-		{
-			$title_arr[] = pjSanitize::html($tpl['arr']['listing_refid']);
+		
+		if (!empty($tpl['arr']['make_id'])) {
+			$makeId = $tpl['arr']['make_id'];
+			$makeName = '';
+			
+			foreach ($tpl['make_arr'] as $make) {
+				if ($make['id'] == $makeId) {
+					$makeName = $make['name'];
+					break;
+				}
+			}
+			
+			if (!empty($makeName)) {
+				$title .= ' ' . $makeName;
+			}
 		}
-		if(!empty($title_arr))
-		{
-			?><div class="b10 bold"><?php echo implode("  / ", $title_arr);?></div><?php
+		
+		if (!empty($tpl['arr']['model_id'])) {
+			$modelId = $tpl['arr']['model_id'];
+			$modelName = '';
+			
+			foreach ($tpl['model_arr'] as $model) {
+				if ($model['id'] == $modelId) {
+					$modelName = $model['name'];
+					break;
+				}
+			}
+			
+			if (!empty($modelName)) {
+				$title .= ' ' . $modelName;
+			}
 		}
+		
+		if (!empty($tpl['arr']['listing_refid'])) {
+			$title .= ' / ' . $tpl['arr']['listing_refid'];
+		}
+
 		?>
+			<h2 class="b10 bold"><?php echo $title ; ?></h2>
+
+		<!-- title section ends here.... -->
+
+
 		<div id="tabs">
 		
 			<!-- <ul>
@@ -106,7 +156,7 @@ if (isset($tpl['status']))
 				</p>
 				<p>
 					<label class="title">Year</label>
-					<span class="inline_block"><?php echo $tpl['arr']['year']; ?></span>
+					<input type="number" name="year" id="year" value="<?php echo $tpl['arr']['year']; ?>" class="pj-form-field required" maxlength="4"  minlength="4" selected/>
 				</p>
 				<p>
 					<label class="title"><?php __('lblListingMake'); ?></label>

@@ -1,5 +1,8 @@
 <?php
-
+// echo '<pre>';
+// print_r($tpl['make_arr']);
+// $receivedMakeObjId = $_POST['makeObjId'];
+// echo $receivedMakeObjId;
 if (isset($tpl['status']))
 
 {
@@ -116,14 +119,14 @@ if (isset($tpl['status']))
 		<p>
 			<label class="title">Vin</label>
 			<span class="inline_block">
-				<input type="text" name="vin" id="vin" class="pj-form-field required" value="" />
+				<input type="text" name="vin" id="vin" class="pj-form-field required" value="" onblur="getInputValue()"/>
 			</span>
 		</p>
 
 		<p>
 			<label class="title">Year</label>
 			<span class="inline_block">
-				<input type="text" name="year" id="year" class="pj-form-field required" value="" />
+				<input type="text" name="year" id="year" class="pj-form-field required" value="" maxlength="4" minlength="4" onblur="getInputValue()"/>
 			</span>
 		</p>
 
@@ -142,6 +145,7 @@ if (isset($tpl['status']))
 					foreach ($tpl['make_arr'] as $v)
 
 					{
+						// $selected = ($v['id'] === $receivedMakeObjId) ? 'selected' : '';
 
 						?><option value="<?php echo $v['id']; ?>"><?php echo stripslashes($v['name']); ?></option><?php
 
@@ -352,3 +356,91 @@ if (isset($tpl['status']))
 }
 
 ?>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<script>
+
+var makeArray = JSON.parse('<?php echo json_encode($tpl['make_arr']); ?>');
+
+function getInputValue() {
+	var yearInput = document.getElementById('year');
+	var year = yearInput.value;
+
+	var vinInput = document.getElementById('vin');
+	var vin = vinInput.value;
+
+	if(year != '' && vin != '') {
+		console.log("not blank");
+		getData(vin, year);
+	}
+}
+
+function getData(vin, year) {
+var url = 'https://vpic.nhtsa.dot.gov/api/vehicles/decodevinextended/' + vin + '?format=json&modelyear=' + year + '';
+$.ajax({
+	url: (url),
+	type: 'GET',
+	dataType: 'json',
+	success: function(res) {
+	if (res.Count > 0) {
+		console.log("res>>>>>", res);
+
+		let resMakeObj = res.Results.find((x) => x.Variable == 'Make');
+
+		if (resMakeObj)
+		{
+			let resMake = resMakeObj.Value;
+			
+			let makeObj = makeArray.find((x) => resMake.toLowerCase().indexOf(x.name.toLowerCase()) !== -1);
+
+			if (makeObj)
+			{
+				let makeObjId = makeObj.id;
+				console.log("makeObjId", makeObjId);
+				$("#make_id").val(Number(makeObjId));
+
+				var resModelObj = res.Results.find((y) => y.Variable == 'Model');
+				console.log('VIN Model', resModelObj);
+				var modelText = resModelObj.Value;
+				
+
+				$.get("https://www.uploadvehicles.com/index.php?controller=pjAdminListings&action=pjActionGetModels&id="+makeObjId, function(data, status){
+					
+					if (status == 'success')
+					{
+						var modelArray = [];
+						var arr1 = data.split('value="');
+						arr1.forEach((item) => {
+							var arr2 = item.split('">');
+							if (arr2[0] !='' && !isNaN(arr2[0])){
+								if (arr2[1] != '')
+								{
+									var arr3 = arr2[1].split('</option>');
+									modelArray.push({id: arr2[0], text: arr3[0]});
+
+								}
+							}
+						});
+
+						setTimeout(function (){
+							$("#model_container").html(data);
+							console.log('modelArray', modelArray);
+							let modelObj = modelArray.find((x) => modelText.toLowerCase() == x.text.toLowerCase());
+
+							if (modelObj)
+							{
+								$("#model_id").val(Number(modelObj.id));
+							}
+						}, 100);
+						
+					}
+				});
+			}
+			
+		}
+	}
+	}
+});
+}
+</script>
