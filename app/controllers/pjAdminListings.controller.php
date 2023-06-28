@@ -4,6 +4,7 @@ if (!defined("ROOT_PATH"))
 	header("HTTP/1.1 403 Forbidden");
 	exit;
 }
+
 class pjAdminListings extends pjAdmin
 {
 	private $imageFiles = array('small_path', 'medium_path', 'large_path', 'source_path');
@@ -235,6 +236,7 @@ class pjAdminListings extends pjAdmin
 		{
 			if (isset($_POST['listing_create']))
 			{
+
 				if ($this->isOwner())
 				{
 					if ($this->option_arr['o_allow_adding_car'] == 'No')
@@ -272,6 +274,22 @@ class pjAdminListings extends pjAdmin
 				$id = $pjListingModel->reset()->setAttributes($data)->insert()->getInsertId();
 				if ($id !== false && (int) $id > 0)
 				{
+					pjListingExtraModel::factory()->where('listing_id', $id)->eraseAll();
+				
+					if (isset($_POST['extra']) && is_array($_POST['extra']) && count($_POST['extra']) > 0)
+					{
+						$pjListingExtraModel = pjListingExtraModel::factory();
+						$pjListingExtraModel->begin();
+						foreach ($_POST['extra'] as $extra_id)
+						{
+							$pjListingExtraModel->setAttributes(array(
+								'listing_id' => $id,
+								'extra_id' => $extra_id
+							))->insert();
+						}
+						$pjListingExtraModel->commit();
+					}
+
 					$err = 'AL03';
 					if (isset($_POST['i18n']))
 					{
@@ -289,14 +307,77 @@ class pjAdminListings extends pjAdmin
 				$this->set('period_arr', pjPeriodModel::factory()->orderBy('t1.days ASC')->findAll()->getData());
 			}
 
-			$make_arr = pjMakeModel::factory()->select('t1.*, t2.content AS name')
-				->join('pjMultiLang', "t2.model='pjMake' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'")
-				->where('t1.status', 'T')->orderBy('name ASC')->findAll()->getData();
-			$this->set('make_arr', pjSanitize::clean($make_arr));
 
-			$user_arr = pjUserModel::factory()->orderBy('t1.name ASC')->findAll()->getData();
-			$this->set('user_arr', pjSanitize::clean($user_arr));
+			///////////////////////////////////////////////
+			$make_arr = pjMakeModel::factory()->select('t1.*, t2.content AS name')
+					->join('pjMultiLang', "t2.model='pjMake' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'", 'left')
+					->where('status', 'T')->orderBy('name ASC')->findAll()->getData();
+					
+			$model_arr = pjCarModModel::factory()->select('t1.*, t2.content AS name')
+				->join('pjMultiLang', "t2.model='pjCarMod' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'", 'left')
+				->where('status', 'T')->where('make_id', $arr['make_id'])->orderBy('name ASC')->findAll()->getData();
 				
+			$feature_arr = pjFeatureModel::factory()->select('t1.*, t2.content AS name')
+				->join('pjMultiLang', "t2.model='pjFeature' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'", 'left')
+				->where('status', 'T')->orderBy('name ASC')->findAll()->getData();
+			
+			$extra_arr = pjExtraModel::factory()->select('t1.*, t2.content AS name')
+				->join('pjMultiLang', "t2.model='pjExtra' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'", 'left')
+				->where('status', 'T')->orderBy('name ASC')->findAll()->getData();
+			
+			$country_arr = pjCountryModel::factory()->select('t1.*, t2.content AS name')
+				->join('pjMultiLang', "t2.model='pjCountry' AND t2.foreign_id=t1.id AND t2.field='name' AND t2.locale='".$this->getLocaleId()."'", 'left')
+				->where('status', 'T')->orderBy('name ASC')->findAll()->getData();
+							
+			$user_arr = pjUserModel::factory()->orderBy('t1.name ASC')->findAll()->getData();
+			
+			$locale_arr = pjLocaleModel::factory()->select('t1.*, t2.file')
+				->join('pjLocaleLanguage', 't2.iso=t1.language_iso', 'left')
+				->where('t2.file IS NOT NULL')
+				->orderBy('t1.sort ASC')->findAll()->getData();
+			
+			$lp_arr = array();
+			foreach ($locale_arr as $item)
+			{
+				$lp_arr[$item['id']."_"] = $item['file']; 
+			}
+			
+			$this->set('arr', $arr);
+			$this->set('make_arr', pjSanitize::clean($make_arr));
+			$this->set('model_arr', pjSanitize::clean($model_arr));
+			$this->set('feature_arr', pjSanitize::clean($feature_arr));
+			$this->set('gallery_arr', pjGalleryModel::factory()->where('foreign_id', $arr['id'])->findAll()->getData());
+			$this->set('extra_arr', pjSanitize::clean($extra_arr));
+			$this->set('listing_extra_arr', pjListingExtraModel::factory()->where('t1.listing_id', $arr['id'])->findAll()->getDataPair(NULL, 'extra_id'));
+			$this->set('country_arr', pjSanitize::clean($country_arr));
+			$this->set('user_arr', pjSanitize::clean($user_arr));
+			$this->set('lp_arr', $locale_arr);
+			$this->set('locale_str', pjAppController::jsonEncode($lp_arr));
+
+			# jQuery Fancybox
+			$this->appendJs('jquery.fancybox.pack.js', PJ_THIRD_PARTY_PATH . 'fancybox/js/');
+			$this->appendCss('jquery.fancybox.css', PJ_THIRD_PARTY_PATH . 'fancybox/css/');
+			
+			# TinyMCE
+			$this->appendJs('tinymce.min.js', PJ_THIRD_PARTY_PATH . 'tinymce/');
+			
+			# Gallery plugin
+			$this->appendCss('pj-gallery.css', pjObject::getConstant('pjGallery', 'PLUGIN_CSS_PATH'));
+			$this->appendJsFromPlugin('ajaxupload.js', 'ajaxupload', 'pjGallery');
+			$this->appendJs('jquery.gallery.js', pjObject::getConstant('pjGallery', 'PLUGIN_JS_PATH'));
+			
+			// $this->appendJs('chosen.jquery.min.js', PJ_THIRD_PARTY_PATH . 'chosen/');
+			// $this->appendCss('chosen.css', PJ_THIRD_PARTY_PATH . 'chosen/');
+			
+			//$this->appendJs('jquery.validate.min.js', PJ_THIRD_PARTY_PATH . 'validate/');
+			$this->appendJs('jquery.multilang.js', PJ_FRAMEWORK_LIBS_PATH . 'pj/js/');
+			// $this->appendJs('jquery.tipsy.js', PJ_THIRD_PARTY_PATH . 'tipsy/');
+			// $this->appendCss('jquery.tipsy.css', PJ_THIRD_PARTY_PATH . 'tipsy/');
+			//$this->appendJs('pjAdminListings.js');
+			$this->appendJs('index.php?controller=pjAdmin&action=pjActionMessages', PJ_INSTALL_URL, true);
+
+			///////////////////////////////////////////////
+
 			$this->appendJs('chosen.jquery.js', PJ_THIRD_PARTY_PATH . 'chosen/');
 			$this->appendCss('chosen.css', PJ_THIRD_PARTY_PATH . 'chosen/');
 				

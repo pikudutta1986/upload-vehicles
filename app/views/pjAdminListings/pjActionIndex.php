@@ -1,4 +1,7 @@
 <?php
+// echo '<pre>';
+// print_r($tpl);
+// print_r($tpl["session"]["admin_user"]["id"]);
 if (isset($tpl['status']))
 {
 	$status = __('status', true);
@@ -38,10 +41,15 @@ if (isset($tpl['status']))
 			<input type="text" name="q" class="pj-form-field pj-form-field-search w150" placeholder="<?php __('btnSearch'); ?>" />
 			<button type="button" class="pj-button pj-button-detailed"><span class="pj-button-detailed-arrow"></span></button>
 		</form>
+		
 		<?php
 		$filter = __('filter', true);
 		?>
+		<?php
+			$dralerName = $tpl["session"]["admin_user"]["name"];
+		?>
 		<div class="float_right t5">
+			<a href="https://www.uploadvehicles.com/inventory/<?php echo $dralerName; ?>.txt" target="_blank" class="pj-button">Get Data</a>
 			<a href="#" class="pj-button btn-all"><?php __('lblAll');?></a>
 			<a href="#" class="pj-button btn-filter btn-status" data-column="status" data-value="T"><?php echo $filter['active']; ?></a>
 			<a href="#" class="pj-button btn-filter btn-status" data-column="status" data-value="F"><?php echo $filter['inactive']; ?></a>

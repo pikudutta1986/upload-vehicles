@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+<ifModule mod_rewrite.c>
+RewriteEngine On  
+
+RewriteRule ^([^/]+).txt$ index.php?username=$1 [L]
