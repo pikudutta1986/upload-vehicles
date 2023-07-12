@@ -68,58 +68,48 @@ $listRows = $listStmt->fetchAll(PDO::FETCH_ASSOC);
 $itemsArray = array();
 foreach($listRows as $item) {
     $itemArray = array();
-    if($item["vin"] != '') {
+    if(trim($item["vin"]) != '') {
         $itemArray["VIN"] = $item["vin"];
     }else {
         $itemArray["VIN"] = $item["listing_refid"];
     }
     $itemArray["Type"] = 'U';
+    $itemArray["Stock"] = '';
     $itemArray["Make"] = getMakeName($item["make_id"], $db);
     $itemArray["Model"] = getModelName($item["model_id"], $db);
     $itemArray["ModelYear"] = $item["year"];
-    $itemArray["Trim"] = $item["trim"];
-    $itemArray["BodyStyle"] = getFeature($item["feature_type_id"], $db);
-    $itemArray["Mileage"] = $item["listing_mileage"];
+    $itemArray["Trim"] = str_replace(",", ";", $item["trim"]);
+    $itemArray["BodyStyle"] = str_replace(",", ";", getFeature($item["feature_type_id"], $db));
+    $itemArray["Mileage"] = str_replace(",", ";", $item["listing_mileage"]);
+    $itemArray["Cylinders"] = getFeature($item["feature_class_id"], $db); //Engine
     $itemArray["EngineDescription"] = '';
-    $itemArray["Cylinders"] = getFeature($item["feature_class_id"], $db);
-    $itemArray["FuelType"] = getFeature($item["feature_fuel_id"], $db);
-    $itemArray["Transmission"] = getFeature($item["feature_gearbox_id"], $db);
-    $itemArray["Price"] = $item["listing_price"];
+    $itemArray["FuelType"] = str_replace(",", ";", getFeature($item["feature_fuel_id"], $db));
+    $itemArray["Transmission"] = str_replace(",", ";", getFeature($item["feature_gearbox_id"], $db));
+    $itemArray["Price"] = str_replace(",", ";", $item["listing_price"]);
     $itemArray["ExteriorColor"] = getFeature($item["feature_colors_id"], $db);
     $itemArray["InteriorColor"] = '';
     $itemArray["OptionText"] = '';
-    $itemArray["Description"] = getDescription($item["id"], $db);
     $itemArray["images"] = getImages($item["id"], $db);
-
-    // $itemArray["dealer"] = $item["name"];
-    // $itemArray["dealer_email"] = $item["email"];
-    // $itemArray["deale_phone"] = $item["contact_phone"];
-    // $itemArray["deale_url"] = $item["contact_url"];
-    // $itemArray["zip"] = $item["address_postcode"];
-    // $itemArray["address"] = $item["address_content"];
-    // $itemArray["country"] = 'USA';
-    // $itemArray["city"] = $item["address_city"];
-    // $itemArray["state"] = $item["address_state"];
-    // $itemArray["doors"] = getFeature($item["feature_doors_id"], $db);
+    $itemArray["Description"] = getDescription($item["id"], $db);
     
+    // if( $itemArray["images"] != '') {
+    //     $itemsArray[] = $itemArray;
+    // }
     $itemsArray[] = $itemArray;
 }
 
 // echo '<pre>';
 // print_r($itemsArray);
+// echo count($itemsArray);
 
 // Generate the CSV data
 $csvData = '';
 $csvData .= '"'.implode('","', array_keys($itemsArray[0])) . "\"\n";
+// echo $csvData;
 foreach ($itemsArray as $row) {
     $csvData .= '"'.implode('","', $row) . "\"\n";
 }
 
-// Set headers for CSV download
-// header('Content-Type: text/csv');
-// header('Content-Disposition: attachment; filename="table.csv"');
-
-// Output the CSV data
 echo $csvData;
 
 ?>
